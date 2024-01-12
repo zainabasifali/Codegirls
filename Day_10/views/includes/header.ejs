@@ -1,0 +1,15 @@
+<header>
+    <h2>This is Header</h2>
+    <% 
+        let navigation = ['<a href="/">Home</a>', '<a href="/about">About</a>','<a href="/contact">Contact</a>','<a href="/gallery">Gallery</a>'];
+    %>
+
+    <ul>
+        <% navigation.forEach( function(nav) { %>
+
+            <li> <%- nav %> </li>
+
+        <% }) %>
+
+    </ul>
+</header>
