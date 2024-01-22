@@ -1,0 +1,142 @@
+Question no 1:
+(i) Node js is bassically a tool that is used to run javascript code at console rather than on a web browser.It differ from other traditional server side models as it can handle multiple requests simultaneously(non-blocking model),it is fast and efficient as uses one engine, have many builtin modules available with node modules so dont rely on different packages and ofcourse its good and efficient for building web applications.
+
+(ii) Event driven means that a certain set of actions are performed on the basis of certain things happening for example: If the calculate button is clicked so the calculation of any operation is done, so that means clicking button is providing input and calculation done is the event driven by that input.
+Non blocking I/O model means that nodejs doesnot block or stop executing other operations while it waits for some thing to be done, hence it can handle multiple requests simultaneously for example:If a certain operation is to be performed on reaction to read a file, so nodejs doesnot wait for file being completely read instead it engage itself in other requests.
+
+(iii) There are different ways to handle asynchronous operation in nodejs like while using callbacks,promisses or async await.
+Callbacks are functions that are passed as arguments to other functions, and are executed when the asynchronous operation is completed or an error occurs.
+Promises are objects that react to the completion or failure of an asynchronous operation.They provide a clear and more modular way to handle asynchronous operations rather than callbacks.(uses a keyword then)
+Async/await are the most efficient way of writing asynchronous code using a keyword known as await. They make the code more readable, concise, and easy to debug. 
+
+Question no 2:
+(i) Var datatype has a global scope means it can be accessed from any where in the program , while let and const have a local scope means they can only be accessible with in the block they are defined. Moreover var can be redeclared in the same scope again , while let and const restricts that ; however var and let can be reassigned but const cant be reassigned even.
+Example 1:
+function get_value(){
+    var a = 100;
+    var a = 10;
+    console.log(a)//10
+}
+get_value();
+This code will be running , as var variable works when it is redeclared in the same scope with same variable name , but it wont work for let and const , as they both cant be redeclared in the same scope with same variable name. 
+Example 2:
+if (true) {
+  var x = 10;
+  let y = 20;
+  const z = 30;
+}
+
+console.log(x); // gives correct output as global scope
+console.log(y); // gives error as local scope
+console.log(z); // gives error as local scope
+
+(ii) Closures are the nested functions that can access and use the variables of their parent functions, even after parent function is returned.
+Example:
+function func1(x){
+    function func2(y){
+         console.log(x+y);//70
+    }
+    return func2
+}
+
+func1(65)(5);
+
+(iii) Null lies with a concept , that you explicitly assign to a object or variable which have no value.
+Undefined is a default value that indicates a variable has not been initialized or does not exist.
+
+(iv) This keyword is used with the property of the object that is used in the function.
+
+Question no 3:
+(i) Javascript was not having let and const keywords before , only var was used which had several issues like it can be redeclared and updated with in same scope, moreover if variable declaration is done afterwards and initialization is done before so it doesnt give errors because of hoisting concepts.In ES-6 let and const came into being which cannot be redeclared and hoisted, which provides a better control ; and even const cannot be reinitialized.
+
+(ii) Arrow function is a short and simpler way of writing functions.It donot have name of the function, they can take multiple parameters that are written in round brackets(), the statements or operation that are to be executed when arrow function is encountered are written in curly braces after the arrow sign , like this =>{//code to be executed}
+Example:
+let sum = (a, b) => { return a + b};
+console.log(sum(10,98))//108
+
+(iii) Template literals are a new feature of Es-6 that helps you to concatenate strings with the embaded expressions while just using backticks instead of double or single quotations like for example if name = "zainab", so for printing while concatenating we will write console.log(`My name is : $ {name}`);, this would print My name is : Zainab.
+
+Question no 4:
+(i) Promises are the objects that represent the outcome of an asynchronous operation. They can be in one of the three states: pending, resolved, or rejected. A promise is created using new Promise constructor, which takes a function as an argument having two parameters: resolve and reject, which settles the promise.If a action is fulfilled then resolve is encountered , otherwise reject is encountered. Without promises, we will have to use callbacks which can lead to nested and complex code, often called callback hell.
+Example:
+function Add(num1,num2){
+    let sum = num1 + num2;
+    return new Promise((resolve, reject)=>{
+       if(num1>0 && num2>0){
+           resolve(num1+num2)
+       }
+       else{
+           reject("You have entered a negative number")
+       }
+    })
+}
+
+Add(5,-4).then((value)=>{
+    console.log(value)
+})
+
+(ii) The destructuring concept is which makes it possible to take out values from arrays, or properties from objects and put them into the seperate variables.It is a shorter hence the easy way that takes less size.Destructuring can be used to skip some values, assign default values, or assign the rest of the values to a new array or object.
+Example:
+let numbers = [1, 2];
+let [a, b, c = 3] = numbers;
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+
+Question no 5:
+(i) A prototype includes some properties and methods that can be inherited by another object.Chain prototyping is the concept of accessing inherited properties and methods of an object along the prototype chain.Inheritance is acctually when child classes use some or all properties and methods of the parent class ; both are corelated with the concept that both uses properties or methods of another class or object.
+
+(ii) Classes are basically which contains properties and methods of real world objects.we use classes in a way that we can define or create multiple objects of the same class and access the properties and methods of that class.Classes can also inherit features from other classes which helps in reducing the repetitions hence make it easier to write object oriented code.
+
+Question no 6:
+(i) Express.js is a web framework for Node.js that provides a set of features and tools to create web applications very easily .It can be used in many things like:
+It can handle different kinds of requests from users.It helps in using other tools and libraries that can add more features and functions to our website.
+
+(ii) Middleware is a function that can do something with the request and response before the server sends back the answer.
+Example:
+const myLogger = function (req, res, next) {
+    console.log('LOGGED')
+    next();
+  }
+  const express = require('express')
+  const app = express()
+  app.use(myLogger)
+  
+  app.get('/', (req, res) => {
+    res.send('Hello World!')
+  })
+  app.listen(3000, () => {
+    console.log('Server listening on port 3000')
+  })
+  
+(iii) Ejs is a language that let you to use javascript code in html files.
+Example:
+Index:
+const express = require('express');
+const app = express();
+app.set('view engine', 'ejs');
+app.get('/', (req, res) => {
+  let data = {
+    title: 'Hello World',
+    message: 'This is a dynamic content rendered by EJS'
+  };
+  res.render('index', data);
+});
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Html:
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+  <h1><%= title %></h1>
+  <p><%= message %></p>
+</body>
+</html>
+
+
+
+
