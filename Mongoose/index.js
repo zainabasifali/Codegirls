@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const express = require("express");
+require('dotenv').config()
+
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended:true }))
@@ -7,7 +9,7 @@ app.use(express.urlencoded({ extended:true }))
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://Zainab:zainab.asif21@atlascluster.0lrzazc.mongodb.net/Library');
+  await mongoose.connect(process.env.uri);
   
   app.get('/register',function(req,res){
      res.render('pages/register');
@@ -27,7 +29,7 @@ async function main() {
      console.log(user1.name)
      console.log(user1.psw)
      await user1.save()
-     res.send("User is added")
+     res.send("welcome you are added")
   })
   app.listen(8000);
 }
