@@ -6,13 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/" method="post">
+    <h1>Update User</h1>
+    <form action="/update/<%=userData._id%>" method="post">
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name"><br><br>
+        <input type="text" name="name" id="name" value="<%=userData.name%>"><br><br>
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email"><br><br>
+        <input type="email" name="email" id="email" value="<%=userData.email%>"><br><br>
         <label for="psw">Password:</label>
-        <input type="password" name="psw" id="psw"><br><br>
+        <input type="password" name="psw" id="psw" value="<%=userData.psw%>"><br><br>
         <input type="submit" value="Submit">
     </form>
 </body>

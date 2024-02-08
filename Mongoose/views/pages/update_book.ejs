@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Update User</h1>
+    <form action="/updatebook/<%=bookData._id%>" method="post">
+        <label for="">Name of the book:</label>
+        <input type="text" name="name" id="name" value="<%= bookData.name %>"><br>
+        <label for="">Author of the book:</label>
+        <input type="text" name="author" id="author" value="<%= bookData.author  %>"><br>
+        <label for="">Category</label>
+        <select name="category" id="" value="<%= bookData.category  %>">
+            <option value="Fantasy">Fantasy</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non fiction">Non fiction</option>
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

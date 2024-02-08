@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <h1>Welcome to the library <br> Users </h1>
+   <table>
+    <thead>
+        <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Operations</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <% for(let user of userData){ %>
+        <tr>
+            <td><%= user.id  %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email  %></td>
+            <td><%= user.psw  %></td>
+            <td>
+                <a href="http://localhost:7000/delete/<%=user.id%>">Delete</a>
+                <a href="http://localhost:7000/update/<%=user.id%>">Update</a>
+            </td>
+        </tr>
+        <% }; %>
+        <tr><td colspan="5"><button><a href="http://localhost:7000/add">Add a user</a></button></td></tr>
+
+    </tbody>
+   </table>
+</body>
+</html>

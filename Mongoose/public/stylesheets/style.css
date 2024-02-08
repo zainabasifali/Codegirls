@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+/* body{
+    background-image: url('/images/library.jpg');
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+} */
+h1{
+    text-align: center;
+    padding: 10px;
+}
+
+table,th,td{
+    border: 1px solid;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+table tr td a{
+ padding: 10px;
+}
+
+button{
+    height: 30px;
+    width: 100px;
+    text-decoration: none;
+}
+.delete{
+   
+    margin-left: 550px;
+    margin-top: 250px;
+}
+#yes{
+     background-color: rgb(121, 170, 121);
+}
+#No{
+    background-color: rgb(179, 105, 105);
+}

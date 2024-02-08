@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <h1>Book List</h1>
+    <table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let book of book_data){ %>
+            <tr>
+                <td>
+                    <%= book.id%>
+                </td>
+                <td>
+                    <%= book.name %>
+                </td>
+                <td>
+                    <%= book.author %>
+                </td>
+                <td>
+                    <%= book.category %>
+                </td>
+                <td>
+                    <a href="http://localhost:7000/updatebook/<%= book.id %>">Update</a>
+                    <a href="http://localhost:7000/deletebook/<%=book.id%>">Delete</i></a>
+                </td>
+            </tr>
+            <% } %>
+            <tr><td colspan="5"><button><a href="http://localhost:7000/addbook">Add a Book</a></button></td></tr>
+    </tbody>
+</table>
+</body>
+</html>
