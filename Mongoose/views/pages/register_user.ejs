@@ -13,6 +13,12 @@
         <input type="email" name="email" id="email"><br><br>
         <label for="psw">Password:</label>
         <input type="password" name="psw" id="psw"><br><br>
+        <label for="">Add Book:</label>
+            <% books.map(books => { %>
+           <input type="checkbox" name="books" id="" value="<%= books._id %>">
+           <label for=""><%= books.name  %></label>
+           <% }) %>
+         <br>
         <input type="submit" value="Submit">
     </form>
 </body>

@@ -3,11 +3,19 @@ const {User} = require('../Model/user')
 const {Book} = require('../Model/books')
 
 //Fuctions for user crud
+exports.createView = (req,res)=>{
+  Book.find().
+  then(books => {
+      res.render('../views/pages/register_user', { books })
+  });
+}
+
 exports.create = (req, res) => {
      const name = req.body.name;
      const psw = req.body.psw;
      const email = req.body.email;
-     const user1 = new User({name,psw,email})
+     const books = req.body.books;
+     const user1 = new User({name,psw,email,books})
      user1.save(user1).then(data => {
      res.redirect('/')
     });
@@ -41,10 +49,11 @@ exports.remove = async (req,res) => {
        }
      }
 
-exports.home = (req,res)=>{
-       User.find().then(userData=>{
-        res.render('../views/pages/userlist',{userData})
-       })
+exports.home = async(req,res)=>{
+  const users = await User.find()
+  .populate('books'); 
+
+res.render('../views/pages/userlist', { users });
 }
 
 //Fuctions for book crud

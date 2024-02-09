@@ -1,5 +1,5 @@
 const express = require("express");
-const { create,home, updateView,update,remove, booklist, bookView, createBook, deleteBook,updateView_book, update_book} = require('../Controller/controller');
+const { create,home, updateView,update,remove, booklist, createView, createBook, deleteBook,updateView_book, update_book} = require('../Controller/controller');
 const router = express.Router();
 
 // Getting
@@ -7,9 +7,7 @@ const router = express.Router();
 router.get('/', home);
 
 //Add a user
-router.get('/add', function(req,res){
-    res.render('../views/pages/register_user')
-});
+router.get('/add',createView );
 
 //Update a user
 router.get('/update/:id', updateView);

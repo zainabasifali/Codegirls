@@ -6,6 +6,7 @@ exports.dbData = async () =>{
     console.log('mongodb connected'+con.connection.host)
     }
     catch(err){
+        console.log("connection error")
         console.log(err)
         process.exit(1)
     }

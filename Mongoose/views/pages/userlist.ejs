@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,24 +16,30 @@
         <th>Name</th>
         <th>Email</th>
         <th>Password</th>
+        <th>Books</th>
         <th>Operations</th>
     </tr>
     </thead>
 
     <tbody>
-        <% for(let user of userData){ %>
+        <% for(let user of users){ %>
         <tr>
             <td><%= user.id  %></td>
             <td><%= user.name %></td>
             <td><%= user.email  %></td>
             <td><%= user.psw  %></td>
             <td>
+                <% for (let book of user.books) { %>
+                    <%= book.name %><br>
+                  <% } %>
+              </td>
+            <td>
                 <a href="http://localhost:7000/delete/<%=user.id%>">Delete</a>
                 <a href="http://localhost:7000/update/<%=user.id%>">Update</a>
             </td>
         </tr>
         <% }; %>
-        <tr><td colspan="5"><button><a href="http://localhost:7000/add">Add a user</a></button></td></tr>
+        <tr><td colspan="6"><button><a href="http://localhost:7000/add">Add a user</a></button></td></tr>
 
     </tbody>
    </table>
