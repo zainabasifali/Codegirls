@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     name: String,
     psw: String,
     email: String,
-    books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }] // Use 'Book' for consistency
+    books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
 });
 
 exports.User = mongoose.model('User', userSchema);
