@@ -2,12 +2,41 @@ const mongoose = require('mongoose');
 const {User} = require('../Model/user')
 const {Book} = require('../Model/books')
 
+let allow = false;
 //Fuctions for user crud
-exports.createView = (req,res)=>{
-  Book.find().
-  then(books => {
-      res.render('../views/pages/register_user', { books })
-  });
+exports.admin = async(req,res)=>{
+  const name = req.body.name
+  const psw = req.body.psw;
+  if(name == 'Zainab'&& psw == '123'){
+    allow = true;
+    const users = await User.find()
+    .populate('books'); 
+  res.render('../views/pages/userlist', { users})
+  }
+  else{
+    res.send("Not verified")
+    allow = false;
+  }
+}
+
+exports.checkAllow = (req, res, next) =>{
+  if (allow) {
+    next(); 
+  } else {
+    res.status(401).send('Not authorized'); 
+  }
+}
+
+
+exports.createView = async (req, res) => {
+  try {
+    const books = await Book.find();
+    const users = await User.find(); 
+    res.render('../views/pages/register_user', { books, users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error fetching data');
+  }
 }
 
 exports.create = (req, res) => {
@@ -48,13 +77,6 @@ exports.remove = async (req,res) => {
          res.status(500).send('Something went wrong');
        }
      }
-
-exports.home = async(req,res)=>{
-  const users = await User.find()
-  .populate('books'); 
-
-res.render('../views/pages/userlist', { users });
-}
 
 //Fuctions for book crud
 exports.booklist = (req,res)=>{
