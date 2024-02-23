@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Delete User</h1>
+    <form action="/delete/confirmed/<%= user_id%>" method="post">
+        <p>Do you want to delete the user on id <%= user_id%>?</p>
+        <button><a href="/delete/confirmed/<%= user_id %>"></a>Yes</button>
+        <button><a href="/read"></a>No</button>
+    </form>
+</body>
+</html>
