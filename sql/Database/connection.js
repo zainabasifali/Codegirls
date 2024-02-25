@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-export const sequelize = new Sequelize('zainabdb', 'root', '', {
+export const sequelize = new Sequelize('library', 'root', '', {
   host: 'localhost',
   dialect: 'mysql'
 });

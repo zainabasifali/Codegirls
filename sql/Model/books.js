@@ -1,17 +1,15 @@
 import { sequelize } from '../Database/connection.js';
 import { DataTypes } from 'sequelize';
-import { Book } from './books.js';
+import { User } from './user.js';
 
-export const User = sequelize.define('User', {
-  username: {
+export const Book = sequelize.define('Books', {
+  bookname: {
     type: DataTypes.STRING,
   },
-  email: {
+  author: {
     type: DataTypes.STRING,
   },
-  password: {
+  category: {
     type: DataTypes.STRING,
   },
 });
-
-
